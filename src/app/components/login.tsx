@@ -5,7 +5,7 @@ export interface LoginComponentProps {
   setIsAuthenticated: (v: boolean) => void;
 }
 export default function Login(props: LoginComponentProps) {
-  const errorMessage = [{ title: 'You need to ', description: '' }];
+  // const errorMessage = [{ title: 'You need to ', description: '' }];
 
   const [passwordInput, setPasswordInput] = useState<
     Record<
@@ -20,17 +20,17 @@ export default function Login(props: LoginComponentProps) {
   >({
     pass1: {
       inputValue: '',
-      hint: '',
+      hint: 'Red is my favorite color. Related to favorite hobby. This is something I can be competitive when someone is stronger than me. Name of an "it".',
       value: process.env.NEXT_PUBLIC_PASSWORD1 || '',
     },
     pass2: {
       inputValue: '',
-      hint: '',
+      hint: 'A chestnut liquid that warms my chest and intoxicates my mind. Montosco owns and distributes it. Involved in our first encounter at Nov 5, 2023.',
       value: process.env.NEXT_PUBLIC_PASSWORD2 || '',
     },
     pass3: {
       inputValue: '',
-      hint: '',
+      hint: "☕☕☕☕☕☕☕☕☕☕ of coffee. Name is just a label. Your name on the Rift isn't just a label—it's a symbol of your journey, outplays, and epic moments in League.",
       value: process.env.NEXT_PUBLIC_PASSWORD3 || '',
     },
   });
@@ -64,7 +64,7 @@ export default function Login(props: LoginComponentProps) {
   };
 
   return (
-    <div className="flex flex-col gap-y-5 justify-center items-center min-h-screen max-w-md m-auto p-2">
+    <div className="flex flex-col gap-y-5 justify-center items-center min-h-screen max-w-lg m-auto p-2">
       <div>
         <div className="flex items-center justify-center">
           <span className="title text-7xl">A</span>
@@ -76,16 +76,15 @@ export default function Login(props: LoginComponentProps) {
           willing to take this test, you can use my letter to get the all the
           password you needed to view what is hidden in this site.{' '}
           <b>
-            TAKE NOTE: you might encounter harsh words or messages, don't be
-            pressed about it!
+            {`TAKE NOTE: you might encounter harsh words or messages, don't be pressed about it!`}
           </b>
         </div>
       </div>
       {Object.entries(passwordInput).map(
         ([key, { inputValue, hint, error }]) => (
-          <div className="flex items-center gap-x-2 relative w-full" key={key}>
-            <div className="w-full">
-              <p className="font-bold">Password {key.replace('pass', '')}</p>
+          <div className="" key={key}>
+            <p className="font-bold">Password {key.replace('pass', '')}</p>
+            <div className="flex items-center gap-x-2  w-full relative">
               <input
                 value={inputValue}
                 type="text"
@@ -97,14 +96,14 @@ export default function Login(props: LoginComponentProps) {
                   )
                 }
               />
-              <p>Hint: {hint}</p>
+              {error !== undefined &&
+                (error ? (
+                  <XCircle className="text-red-400 absolute right-5" />
+                ) : (
+                  <CheckCircle className="text-green-400 absolute right-5" />
+                ))}
             </div>
-            {error !== undefined &&
-              (error ? (
-                <XCircle className="text-red-400 absolute right-5" />
-              ) : (
-                <CheckCircle className="text-green-400 absolute right-5" />
-              ))}
+            <p>Hint: {hint}</p>
           </div>
         )
       )}
