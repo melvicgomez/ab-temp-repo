@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Login from './components/login';
+import Dashboard from './components/dashboard';
 
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -11,11 +12,7 @@ export default function Home() {
         e.preventDefault();
       }}
     >
-      {!isAuthenticated ? (
-        <Login setIsAuthenticated={setIsAuthenticated} />
-      ) : (
-        <div>login</div>
-      )}
+      {!isAuthenticated ? <Login setIsAuthenticated={setIsAuthenticated} /> : <Dashboard />}
     </div>
   );
 }

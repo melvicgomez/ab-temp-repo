@@ -16,3 +16,16 @@ body {
   background: var(--background);
   font-family: var(--font-afacad), Arial, Helvetica, sans-serif;
 }
+
+.grid {
+  display: flex;
+  width: auto;
+}
+
+.gridColumn {
+  background-clip: padding-box;
+}
+
+.card {
+  overflow: hidden;
+}
