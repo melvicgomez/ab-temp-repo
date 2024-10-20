@@ -11,8 +11,29 @@
   font-family: var(--font-qwitcher), Arial, Helvetica, sans-serif;
 }
 
+* {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-afacad), Arial, Helvetica, sans-serif;
+}
+
+.grid {
+  display: flex;
+  width: auto;
+  gap: 12px;
+}
+
+.gridColumn {
+  background-clip: padding-box;
+}
+
+.card {
+  overflow: hidden;
+  margin-bottom: 12px;
 }

@@ -1,0 +1,216 @@
+[
+  {
+    "id": 5,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/5.jpeg"
+    }
+  },
+  {
+    "id": 18,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/18.jpg"
+    }
+  },
+  {
+    "id": 14,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/14.jpg"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "rgb(139 92 246)",
+      "btncolor": "rgb(46 16 101)",
+      "title": "Note 6: Depth of Connection and Self-Awareness",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 3,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/3.jpeg"
+    }
+  },
+  {
+    "id": 1,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/1.jpeg"
+    }
+  },
+  {
+    "id": 19,
+    "type": "audio",
+    "audio": {
+      "color": "#f87171",
+      "btncolor": "#991b1b",
+      "title": "The Weight of Expectations",
+      "description": "<div>I set my standards high, like mountains to climb,</div><div>Each goal a beacon, a rhythm, a rhyme.</div><div>You stand beside me, steady and true,</div><div>Absorbing my visions, crafting your view.</div><br/><div>In the tension of demands, you shine and you bend,</div><div>Finding strength in my pushing, the way you transcend.</div><div>Together we navigate this intricate dance,</div><div>In the heart of our friendship, we both find our chance.</div>",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 17,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/17.jpg"
+    }
+  },
+  {
+    "id": 10,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/10.jpg"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "rgb(157 23 77)",
+      "btncolor": "rgb(80 7 36)",
+      "title": "Note 9: Time to Take Control",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 8,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/8.jpg"
+    }
+  },
+  {
+    "id": 7,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/7.jpg"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "rgb(22 78 99)",
+      "btncolor": "rgb(8 51 68)",
+      "title": "Grounded in Grace",
+      "description": "<div>I reach for the stars, my ambitions take flight,</div><div>With standards like rivers, I navigate night.</div><div>You're my quiet sage, the calm in my storm,</div><div>Grounding my spirit, keeping my heart warm.</div><br /><div>Like a steady breath in a mindful retreat,</div><div>You absorb my conflicts, make my journey sweet.</div><div>In this sacred practice of friendship and trust,</div><div>You lift me higher, as together we must.</div>",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 11,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/11.jpg"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "rgb(244 63 94)",
+      "btncolor": "rgb(76 5 25)",
+      "title": "Note 10: Embrace the Temporary Nature of Life",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 4,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/4.jpeg"
+    }
+  },
+  {
+    "id": 6,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/6.jpg"
+    }
+  },
+  {
+    "id": 16,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/16.jpg"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "rgb(234 179 8)",
+      "btncolor": "rgb(66 32 6)",
+      "title": "Note 3: Live Fully, Leap Boldly",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 12,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/12.jpg"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "rgb(239 68 68)",
+      "btncolor": "rgb(185 28 28)",
+      "title": "Note 2: Reflecting on Vulnerability and Growth",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "rgb(5 150 105)",
+      "btncolor": "rgb(2 44 34)",
+      "title": "Note 4: Gratitude, Growth, and New Beginnings",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "rgb(134 25 143)",
+      "btncolor": "rgb(74 4 78)",
+      "title": "Note 8: Set Your Course and Keep Smiling",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 20,
+    "type": "audio",
+    "audio": {
+      "color": "#f87171",
+      "btncolor": "#991b1b",
+      "title": "Note 1: Embrace Vulnerability, Stay Authentic",
+      "url": "/static/assets/dan da dan.mp3"
+    }
+  },
+  {
+    "id": 15,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/15.jpg"
+    }
+  },
+  {
+    "id": 2,
+    "type": "img",
+    "img": {
+      "url": "/static/assets/2.jpeg"
+    }
+  }
+]
