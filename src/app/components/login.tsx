@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CheckCircle, XCircle } from 'react-feather';
 
 export interface LoginComponentProps {
   setIsAuthenticated: (v: boolean) => void;
 }
 export default function Login(props: LoginComponentProps) {
-  // const errorMessage = [{ title: 'You need to ', description: '' }];
-
+  const [isDisabled, setIsDisabled] = useState(true);
   const [passwordInput, setPasswordInput] = useState<
     Record<
       'pass1' | 'pass2' | 'pass3',
@@ -20,12 +19,12 @@ export default function Login(props: LoginComponentProps) {
   >({
     pass1: {
       inputValue: '',
-      hint: 'Red is my favorite color. Related to favorite hobby. This is something I can be competitive when someone is stronger than me. Name of an "it".',
+      hint: 'Red is the color for passion. Related to favorite hobby. This is something I can be competitive when someone is stronger than me. Name of an "it".',
       value: process.env.NEXT_PUBLIC_PASSWORD1 || '',
     },
     pass2: {
       inputValue: '',
-      hint: 'A chestnut liquid that warms my chest and intoxicates my mind. Montosco owns and distributes it. Involved in our first encounter at Nov 5, 2023.',
+      hint: "A chestnut liquid that warms my chest and intoxicates my mind. Involved in our first encounter at Nov 5, 2023. You introduce me it's name (anniversary).",
       value: process.env.NEXT_PUBLIC_PASSWORD2 || '',
     },
     pass3: {
@@ -51,6 +50,7 @@ export default function Login(props: LoginComponentProps) {
         .filter((f) => !!f);
       if (hasError.length === 0) {
         props.setIsAuthenticated(true);
+        sendEmail();
       }
       return updatedState;
     });
@@ -61,6 +61,57 @@ export default function Login(props: LoginComponentProps) {
       ...prevState,
       [key]: { ...prevState[key], inputValue: newValue },
     }));
+  };
+
+  useEffect(() => {
+    const enableTime = new Date('2024-10-20T21:00:00'); // Oct 20, 2024, 8:01 AM
+    const now = new Date();
+
+    if (now >= enableTime) {
+      setIsDisabled(false); // Enable button if the current time has passed the enable time
+    } else {
+      // Calculate the remaining time until the target date in milliseconds
+      const timeout = enableTime.getTime() - now.getTime(); // Ensure both are in milliseconds
+
+      // Set a timeout to enable the button at the correct time
+      const timer = setTimeout(() => {
+        setIsDisabled(false);
+      }, timeout);
+
+      // Cleanup timeout on component unmount
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const sendEmail = async () => {
+    const data = {
+      service_id: process.env.NEXT_PUBLIC_SERVICE_ID,
+      template_id: process.env.NEXT_PUBLIC_TEMPLATE_ID,
+      user_id: process.env.NEXT_PUBLIC_PUBLIC_KEY,
+      template_params: {
+        message: `Login ${new Date().toLocaleString()}`,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        'https://api.emailjs.com/api/v1.0/email/send',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`Error: ${errorData.text || response.statusText}`);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -109,9 +160,22 @@ export default function Login(props: LoginComponentProps) {
       )}
 
       <hr className="border-gray-400 w-full my-2" />
+
+      {isDisabled && (
+        <p>
+          Button can work only after{' '}
+          {new Date('2024-10-20T21:00:00').toLocaleString()}
+        </p>
+      )}
+
       <div className="w-full">
         <button
-          className="w-full bg-red-700 font-semibold py-5"
+          disabled={isDisabled}
+          className={`${
+            isDisabled
+              ? 'bg-red-200 cursor-not-allowed'
+              : 'bg-red-700 cursor-pointer'
+          } w-full font-semibold py-5`}
           onClick={validateInputs}
         >
           SHOW ME!!!
