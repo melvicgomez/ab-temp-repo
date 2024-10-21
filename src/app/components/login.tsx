@@ -6,6 +6,7 @@ export interface LoginComponentProps {
 }
 export default function Login(props: LoginComponentProps) {
   const [isDisabled, setIsDisabled] = useState(true);
+
   const [passwordInput, setPasswordInput] = useState<
     Record<
       'pass1' | 'pass2' | 'pass3',
@@ -40,17 +41,15 @@ export default function Login(props: LoginComponentProps) {
 
       Object.keys(updatedState).forEach((key) => {
         const k = key as 'pass1' | 'pass2' | 'pass3';
-        updatedState[k].error =
-          updatedState[k].inputValue.toLowerCase() !==
-          updatedState[k].value.toLowerCase();
+        updatedState[k].error = updatedState[k].inputValue.toLowerCase() !== updatedState[k].value.toLowerCase();
       });
 
       const hasError = Object.values(updatedState)
         .map((s) => s.error)
         .filter((f) => !!f);
       if (hasError.length === 0) {
-        props.setIsAuthenticated(true);
         sendEmail();
+        props.setIsAuthenticated(true);
       }
       return updatedState;
     });
@@ -94,16 +93,13 @@ export default function Login(props: LoginComponentProps) {
     };
 
     try {
-      const response = await fetch(
-        'https://api.emailjs.com/api/v1.0/email/send',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -123,58 +119,41 @@ export default function Login(props: LoginComponentProps) {
           <span className="title text-7xl">B</span>
         </div>
         <div className="-mt-6 text-center">
-          This little mystery that will test your <b>200+IQ</b> 😁😂. If you are
-          willing to take this test, you can use my letter to get the all the
-          password you needed to view what is hidden in this site.{' '}
-          <b>
-            {`TAKE NOTE: you might encounter harsh words or messages, don't be pressed about it!`}
-          </b>
+          This little mystery that will test your <b>200+IQ</b> 😁😂. If you are willing to take this test, you can use
+          my letter to get the all the password you needed to view what is hidden in this site.{' '}
+          <b>{`TAKE NOTE: you might encounter harsh words or messages, don't be pressed about it!`}</b>
         </div>
       </div>
-      {Object.entries(passwordInput).map(
-        ([key, { inputValue, hint, error }]) => (
-          <div className="" key={key}>
-            <p className="font-bold">Password {key.replace('pass', '')}</p>
-            <div className="flex items-center gap-x-2  w-full relative">
-              <input
-                value={inputValue}
-                type="text"
-                className="my-2 bg-transparent p-5 border border-white w-full"
-                onChange={(e) =>
-                  handleChange(
-                    key as 'pass1' | 'pass2' | 'pass3',
-                    e.target.value
-                  )
-                }
-              />
-              {error !== undefined &&
-                (error ? (
-                  <XCircle className="text-red-400 absolute right-5" />
-                ) : (
-                  <CheckCircle className="text-green-400 absolute right-5" />
-                ))}
-            </div>
-            <p>Hint: {hint}</p>
+      {Object.entries(passwordInput).map(([key, { inputValue, hint, error }]) => (
+        <div className="" key={key}>
+          <p className="font-bold">Password {key.replace('pass', '')} (one word)</p>
+          <div className="flex items-center gap-x-2  w-full relative">
+            <input
+              value={inputValue}
+              type="text"
+              className="my-2 bg-transparent p-5 border border-white w-full"
+              onChange={(e) => handleChange(key as 'pass1' | 'pass2' | 'pass3', e.target.value)}
+            />
+            {error !== undefined &&
+              (error ? (
+                <XCircle className="text-red-400 absolute right-5" />
+              ) : (
+                <CheckCircle className="text-green-400 absolute right-5" />
+              ))}
           </div>
-        )
-      )}
+          <p>Hint: {hint}</p>
+        </div>
+      ))}
 
       <hr className="border-gray-400 w-full my-2" />
 
-      {isDisabled && (
-        <p>
-          Button can work only after{' '}
-          {new Date('2024-10-20T21:00:00').toLocaleString()}
-        </p>
-      )}
+      {isDisabled && <p>Button can work only after {new Date('2024-10-20T21:00:00').toLocaleString()}</p>}
 
       <div className="w-full">
         <button
           disabled={isDisabled}
           className={`${
-            isDisabled
-              ? 'bg-red-200 cursor-not-allowed'
-              : 'bg-red-700 cursor-pointer'
+            isDisabled ? 'bg-red-200 cursor-not-allowed' : 'bg-red-700 cursor-pointer'
           } w-full font-semibold py-5`}
           onClick={validateInputs}
         >
